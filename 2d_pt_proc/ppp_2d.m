@@ -4,7 +4,7 @@
 %       -See inline 
 %       -The expected number of users is given by length*length*lambda 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function ppp_pairs = ppp_2d(lambda, length, file_path)
+function ppp_pairs = ppp_2d(lambda, length )
     %disp 'WARNING: Overwriting function arguments in ppp_2d'
     %lambda= 1;
     %length = 100;
@@ -39,7 +39,8 @@ function ppp_pairs = ppp_2d(lambda, length, file_path)
             end 
         end
     end 
-    csvwrite(file_path, grid_pairs);
+    %csvwrite(file_path, grid_pairs);
     ppp_pairs = grid_pairs;
+    %save(dst_file_path,'ppp_pairs');
     %scatter(grid_pairs(:,1), grid_pairs(:,2));
 end
