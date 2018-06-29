@@ -1,12 +1,13 @@
 %Example for generating 2-D Poisson point process
 %   
 %   Conceptual Notes:
-%      -See inline 
+%       -See inline 
+%       -The expected number of users is given by length*length*lambda 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function ppp_pairs = ppp_2d(lambda, length, file_path)
     %disp 'WARNING: Overwriting function arguments in ppp_2d'
-    %lambda_linear = 1;
-    %samps_linear = 100;
+    %lambda= 1;
+    %length = 100;
     %file_path = 'ppp_pairs.csv';
     
     X = poissrnd(sqrt(lambda),length,length);
