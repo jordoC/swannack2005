@@ -14,7 +14,7 @@ classdef Channel
         function obj = Channel(stdDev, staApDist)
             plExp = 2.4;
             rvLen = 1000;
-            obj.rvLen
+            obj.rvLen = rvLen;
             obj.stdDev = stdDev;
             obj.plExp = plExp;
             pl = staApDist^(-plExp);

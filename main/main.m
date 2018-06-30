@@ -5,15 +5,16 @@
 %       -The expected number of users is given by length*length*lambda 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 addpath ../2d_pt_proc;
-addpath ../ap;
-addpath ../sta;
+addpath ../;
+addpath ../@Station;
 
 ap_loc = [5,5];     %Meters
+num_ap_ants = 4;
 ap_tx_power = 1;    %Watts
 
 sta_density = 1;
 wlan_length = 10;   %Meters, area is square of this value
-a = AccessPoint(ap_loc, ap_tx_power);
+a = AccessPoint(ap_loc, ap_tx_power, 4);
 
 
 sta_locs = ppp_2d(sta_density, wlan_length);
