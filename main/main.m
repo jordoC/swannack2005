@@ -8,12 +8,12 @@ addpath ../2d_pt_proc;
 addpath ../ap;
 addpath ../sta;
 
-ap_loc = [0,0];     %Meters
+ap_loc = [5,5];     %Meters
 ap_tx_power = 1;    %Watts
 
 sta_density = 1;
 wlan_length = 10;   %Meters, area is square of this value
-a = AssociationPoint(ap_loc, ap_tx_power);
+a = AccessPoint(ap_loc, ap_tx_power);
 
 
 sta_locs = ppp_2d(sta_density, wlan_length);
@@ -23,4 +23,12 @@ for sta_loc_idx = 1:num_stas
     stas = [stas, Station(sta_locs(sta_loc_idx,:))];
 end
 
-a = a.setPotAssocStas(stas,10);
+a = a.setPotAssocStas(stas,5);
+
+%Plotting for verification
+%plot(1);
+%clf;
+%hold on;
+%
+%scatter(sta_locs(:,1),sta_locs(:,2));
+%viscircles([5 5],5);

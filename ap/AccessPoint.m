@@ -1,4 +1,9 @@
-classdef AssociationPoint 
+%Access Point Class
+%   
+%   Conceptual Notes:
+%       -See inline 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+classdef AccessPoint 
     properties
         txPower;    %Watts
         location;   %Meters: (x,y)
@@ -8,7 +13,7 @@ classdef AssociationPoint
          
     end
     methods
-        function obj = AssociationPoint(location,txPower)
+        function obj = AccessPoint(location,txPower)
             obj.txPower = txPower;
             obj.location = location;
             obj.potAssocStas = [];
@@ -21,9 +26,12 @@ classdef AssociationPoint
                 sta_loc = allStas(sta_idx).location;
                 x = abs(sta_loc(1) - obj.location(1));
                 y = abs(sta_loc(2) - obj.location(2));
-                if ~(pythag_ck(x,y,radius))
-                    obj.potAssocStas = [obj.potAssocStas, allStas(sta_idx)]
-                end
+                if (pythag_ck(x,y,radius))
+                    obj.potAssocStas = [obj.potAssocStas, allStas(sta_idx)];
+                %DBG:
+                %else
+                %    sta_loc
+                %end
             end
         end
     end
