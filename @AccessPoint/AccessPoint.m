@@ -1,20 +1,40 @@
-%Access Point Class
-%   
-%   Conceptual Notes:
-%       -See inline 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%> @file AccessPoint.m
+%> @brief Model of an AP for use in a WLAN
+% ======================================================================
+%> @brief  TODO
+%
+%> TODO
+% ======================================================================
 classdef AccessPoint 
     properties
-        txPower;    %Watts (total transmit power)
-        numAnts;    %Number of antennas
-        bfVec;      %Beamforming vector
-        location;   %Meters: (x,y)
-        assocStas;  %List of associated STAs
-        potAssocStas;  %List of potential STAs to associate with
-        commonStas; %List of AP, STA pairs that represent other APs that can associate with STAs
+        %> Watts (total transmit power)
+        txPower;    
+        %> Number of antennas
+        numAnts;    
+        %> Beamforming vector
+        bfVec; 
+        %>  Meters: (x,y)
+        location;  
+        %> List of associated STAs
+        assocStas;  
+        %> List of potential STAs to associate with
+        potAssocStas;  
+        %> List of AP, STA pairs that represent other APs that can associate with STAs
+        commonStas; 
          
     end
     methods
+        % ======================================================================
+        %> @brief Class constructor
+        %>
+        %> Builds up AP class
+        %>
+        %> @param location of the AP in the plane
+        %> @param transmit power in watts
+        %> @param number of antennas the AP has
+        %>
+        %> @return initialized instance of the class
+        % ======================================================================
         function obj = AccessPoint(location, txPower, numAnts)
             obj.txPower = txPower;
             obj.location = location;
@@ -23,24 +43,25 @@ classdef AccessPoint
             obj.potAssocStas = [];
             obj.commonStas = [];
         end
+        % ======================================================================
+        %> @brief Find the set of candidate STAs the AP can associate with
+        %>
+        %> @param obj instance of the classDocumentationExample class.
+        %> @param all the STAs that exist in the plane
+        %> @param radius in meters  the AP is able to reach
+        %>
+        %> @return modified instance of the class
+        % ======================================================================
         obj = setPotAssocStas(obj, allStas, radius)
-        %    addpath ../util
-        %    chan_std_dev = 1;
-        %    num_stas = length(allStas);
-        %    for sta_idx = 1:num_stas
-        %        sta_loc = allStas(sta_idx).location;
-        %        x = abs(sta_loc(1) - obj.location(1));
-        %        y = abs(sta_loc(2) - obj.location(2));
-        %        sta_ap_dist = sqrt(x^(2)+y^(2));
-        %        if (pythag_ck(x,y,radius))
-        %            sta =  allStas(sta_idx);
-        %            sta = sta.setChannel(chan_std_dev, sta_ap_dist, obj.numAnts);
-        %            obj.potAssocStas = [obj.potAssocStas, sta];
-        %        %DBG:
-        %        %else
-        %        %    sta_loc
-        %        end
-        %    end
-        %end
+        % ======================================================================
+        %> @brief Generate semi-orthogonal user sets
+        %>
+        %> @param orthogonality threshold (epsilon Swannack, 2005)
+        %> @param lower bound on the channel L2 norm (rho- Swannack 2005)
+        %> @param upper bound on the channel L2 norm (rho+ Swannack 2005)
+        %>
+        %> @return modified instance of the class
+        % ======================================================================
+        obj = setSusGroups(obj, orthThresh, snrLower, snrUpper)
     end
 end
