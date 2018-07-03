@@ -1,4 +1,5 @@
-function obj = setPotAssocStas(obj, allStas, radius)
+function obj = setSusGroups(obj, orthThresh, snrLower, snrUpper)
+    num_stas = length(obj.potAssocStas);
     addpath ../util
     chan_std_dev = 1;
     num_stas = length(allStas);
