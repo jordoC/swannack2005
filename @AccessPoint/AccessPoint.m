@@ -21,6 +21,8 @@ classdef AccessPoint
         potAssocStas;  
         %> List of AP, STA pairs that represent other APs that can associate with STAs
         commonStas; 
+        %> Matrix representing semi-orthogonal user selection sets
+        susSets; 
          
     end
     methods
