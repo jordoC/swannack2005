@@ -29,13 +29,11 @@ function obj = genStaSusSets(obj, orthThresh, snrLower, snrUpper)
             end 
         end
         if length(stas_mat) == 0
-            stas_mat = SusGroups(stas_vec);
+            stas_mat = SusGroups(sta, stas_vec);
             %break;
         else
-            whos stas_mat;
-            stas_mat = [stas_mat SusGroups(stas_vec)];
+            stas_mat = [stas_mat SusGroups(sta, stas_vec)];
         end
     end
-    plot(1:length(orth_val), orth_val);
-    obj.susSets = stas_mat;
+    obj.susGroups= stas_mat;
 end

@@ -7,8 +7,10 @@
 % ======================================================================
 classdef SusGroups
     properties
-        %> Stations in the SUS group
-        stas;
+        %> Set of stations in the SUS group
+        stasSet;
+        %> Tree of stations 
+        staTree;
     end
     methods
         % ======================================================================
@@ -21,8 +23,9 @@ classdef SusGroups
         %>
         %> @return instance of the Template class.
         % ======================================================================
-        function obj = SusGroups(stas)
-            obj.stas = stas;
+        function obj = SusGroups(root, stas)
+            obj.stasSet = stas;
+            obj.staTree = tree(root);
         end
         % ======================================================================
         %> @brief Brief description of the exampleMethod1 method

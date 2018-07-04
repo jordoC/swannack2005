@@ -22,7 +22,7 @@ classdef AccessPoint
         %> List of AP, STA pairs that represent other APs that can associate with STAs
         commonStas; 
         %> Matrix representing semi-orthogonal user selection sets
-        susSets; 
+        susGroups; 
          
     end
     methods
@@ -65,5 +65,15 @@ classdef AccessPoint
         %> @return modified instance of the class
         % ======================================================================
         obj = genStaSusSets(obj, orthThresh, snrLower, snrUpper)
+        % ======================================================================
+        %> @brief Form SUS sets into trees
+        %>
+        %> @param orthogonality threshold (epsilon Swannack, 2005)
+        %> @param lower bound on the channel L2 norm (rho- Swannack 2005)
+        %> @param upper bound on the channel L2 norm (rho+ Swannack 2005)
+        %>
+        %> @return modified instance of the class
+        % ======================================================================
+        obj = genStaSusTrees(obj, orthThresh, snrLower, snrUpper)
     end
 end
