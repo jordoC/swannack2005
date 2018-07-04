@@ -26,7 +26,7 @@ end
 
 a = a.setPotAssocStas(stas,5);
 
-a = a.setSusGroups(.001,0,0);
+a = a.genStaSusSets(.001,0,0);
 
 %Plotting for verification
 %plot(1);

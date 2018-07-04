@@ -56,7 +56,7 @@ classdef AccessPoint
         % ======================================================================
         obj = setPotAssocStas(obj, allStas, radius)
         % ======================================================================
-        %> @brief Generate semi-orthogonal user sets
+        %> @brief Generate SUS groups that belong to each STA
         %>
         %> @param orthogonality threshold (epsilon Swannack, 2005)
         %> @param lower bound on the channel L2 norm (rho- Swannack 2005)
@@ -64,6 +64,6 @@ classdef AccessPoint
         %>
         %> @return modified instance of the class
         % ======================================================================
-        obj = setSusGroups(obj, orthThresh, snrLower, snrUpper)
+        obj = genStaSusSets(obj, orthThresh, snrLower, snrUpper)
     end
 end
