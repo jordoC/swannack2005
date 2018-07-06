@@ -33,7 +33,7 @@ classdef Station
             obj.numAnts = 1;%Assume only one antenna
             obj.location = location;
             obj.channel= [];
-            obj.id = DataHash(location);
+            obj.id = hex2dec(DataHash(location));%Have to be careful about truncations here
         end
         % ======================================================================
         %> @brief Define the Rayleigh-fading channel for the STA

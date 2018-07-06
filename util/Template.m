@@ -36,4 +36,3 @@ classdef Template
         end
     end
 end
-hist(atan(imag(h)./real(h)),20)
