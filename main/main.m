@@ -8,12 +8,12 @@ addpath ../2d_pt_proc;
 addpath ../;
 addpath ../@Station;
 
-ap_loc = [5,5];     %Meters
+ap_loc = [2,2];     %Meters
 num_ap_ants = 4;
 ap_tx_power = 1;    %Watts
 
 sta_density = 1;
-wlan_length = 10;   %Meters, area is square of this value
+wlan_length = 4;   %Meters, area is square of this value
 a = AccessPoint(ap_loc, ap_tx_power, 4);
 
 
