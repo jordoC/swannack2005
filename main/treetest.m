@@ -1,3 +1,7 @@
+
+clear all;
+save('intersection.mat');
+
 main
 
 sus_groups = a.susGroups;
@@ -18,6 +22,7 @@ for sus_group_base_idx = 1:1%length(sus_groups)
             stas_cmp_id = [stas_cmp_id current_sta_cmp.id];
         end
     end
+    csvwrite('stas_cmp_id.csv',stas_cmp_id);
     %stas_cmp_id_bk = stas_cmp_id;
     %stas_cmp_id = reshape(stas_cmp_id, length(stas_orth_set), 1);
     for sta_cmp_idx = 1:length(stas_orth_set)
@@ -52,7 +57,24 @@ for sus_group_base_idx = 1:1%length(sus_groups)
             end
         end
     end
-    intsct = recurIntsct(sta_mut_orth_ck_ids_vec, length(sta_mut_orth_ck_ids_vec)-5);
+    start_idx = length(sta_mut_orth_ck_ids_vec)-5;
+    intsct  = recurIntsct(sta_mut_orth_ck_ids_vec, start_idx);
+    t = tree(sus_groups(sus_mut_orth_ck_idx).staTree.get(1).id);
+    intsct_old = [];
+    current_parent = 1;
+    parent_idx = 1;
+    for i = start_idx:length(sta_mut_orth_ck_ids_vec)
+        filename = strcat('intersection_',string(i),'.mat');
+        intsct_struct = load(filename);
+        intsct = setxor(intsct_struct.intersection,intsct_old);
+        intsct_old = intsct_struct.intersection;
+        for parent_idx = current_parent:current_parent+length(intsct)-1
+            t = t.addnode(parent_idx,intsct(1+parent_idx-current_parent));
+        end
+        current_parent = parent_idx-length(intsct)+1;
+    end
+    
+
 end
 %    for sta_cmp_id_idx = 1:length(stas_orth_set)
 %        current_sta_cmp = stas_orth_set(sta_cmp_idx);
