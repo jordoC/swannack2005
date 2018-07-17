@@ -10,7 +10,7 @@ function obj = genStaSusSets(obj, orthThresh, snrLower, snrUpper)
             if i == j
                 tmp = 0; %may want to put SNR requirement here
                 if (i == 1)
-                    stas_mat = {obj.potAssocStas(j)}
+                    stas_mat = {obj.potAssocStas(j)};
                     sus_created = true;
                     %break;
                 else
@@ -28,26 +28,8 @@ function obj = genStaSusSets(obj, orthThresh, snrLower, snrUpper)
                 if orth_val < orthThresh
                     stas_mat{i,j} = obj.potAssocStas(j);
                 end
-                %if orth_val < orthThresh
-                %    if length(stas_vec) == 0
-                %        stas_vec=  obj.potAssocStas(j);
-                %    else
-                %        stas_vec = [ stas_vec obj.potAssocStas(j)];
-                %        %whos stas_vec;
-                %    end
-                %end 
             end 
         end
-        %if i == 1
-        %    stas_mat = { stas_vec };
-        %    %break;
-        %else
-        %    stas_mat{i,1} = stas_vec;
-        %end
     end
-    %for i = 1:length(stas_mat)
-    %    tmp = stas_mat(i,:);
-    %    stas_mat(i,:) = tmp(~cellfun('isempty',tmp));
-    %end
-    obj.susGroups= stas_mat;
+    obj.susSets = stas_mat;
 end
