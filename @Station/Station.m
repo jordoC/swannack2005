@@ -64,6 +64,28 @@ classdef Station
         function obj = setAssocAp(ap)
             obj.assocAp = ap;
         end
+        % ======================================================================
+        %> @brief Tell if two STAs are the same
+        %>
+        %> @param first STA
+        %> @param second STA
+        %>
+        %> @return logical value
+        % ======================================================================
+        function isSame = eq(sta1, sta2)
+            isSame = strcmp(sta1.id, sta2.id);
+        end
+        % ======================================================================
+        %> @brief Tell if two STAs are the same
+        %>
+        %> @param first STA
+        %> @param second STA
+        %>
+        %> @return logical value
+        % ======================================================================
+        function isNotSame = ne(sta1, sta2)
+            isNotSame = ~strcmp(sta1.id, sta2.id);
+        end
         %function stas = associateSta(Sta)
         %    stas = [A]
         %end
