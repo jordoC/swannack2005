@@ -28,7 +28,7 @@ a = a.setPotAssocStas(stas,wlan_length);
 a = a.genStaSusSets(.001,0,0);
 
 a = a.genStaSusGroups(2);
-%ps = PowerSet(a.susGroups,2);
+ps = rmDuplicates(a.genStaSusGroups);
 
 %Plotting for verification
 %plot(1);
