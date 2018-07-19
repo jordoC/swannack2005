@@ -81,7 +81,7 @@ function obj = genStaSusGroups( obj, maxGroupSize)
         
         for group_idx = 1:numel(P_tmp{1,root_idx})
             should_add = true;
-            current_group = P_tmp{1,root_idx}{group_idx,1}
+            current_group = P_tmp{1,root_idx}{group_idx,1};
             for group_ck_idx = 1:numel(P)
                 %P
                 %length(P{group_ck_idx,1})
