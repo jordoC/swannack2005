@@ -7,12 +7,14 @@ function p_not_empty_lbnd = p_not_empty(theta, group_size, num_dim, num_users)
     p_orth_lbnd = p_orth(theta, l, m);
     rsum = 0;
     for j = l:n
+        wid = 'MATLAB:nchoosek:LargeCoefficient';
+        warning('off',wid);
         comb = nchoosek(n,j);
         %prob = (p_s*(exp(-1*E_func(p_orth_lbnd,l))))^j;
         prob = (p_s)^(j)*(1-p_s)^(n-j);
         rsum = rsum + comb*prob;
     end
-    prob_shell_l = rsum
+    prob_shell_l = rsum;
 
     E_arg1 = 2*p_orth_lbnd^(2)/l;
     if(E_func(p_orth_lbnd,l) == E_arg1)
