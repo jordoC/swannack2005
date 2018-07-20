@@ -1,9 +1,9 @@
-function p_not_empty_lbnd = p_not_empty(theta, group_size, num_dim, num_users)
+function p_not_empty_lbnd = p_not_empty(theta, rho_min, rho_max, group_size, num_dim, num_users)
     n = num_users;
     l = group_size;
     m = num_dim;
 
-    p_s = p_shell();
+    p_s = p_shell(rho_min, rho_max, num_dim);
     p_orth_lbnd = p_orth(theta, l, m);
     rsum = 0;
     for j = l:n
