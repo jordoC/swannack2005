@@ -8,7 +8,7 @@ function [theta num_users err] = sym_solve_p_not_empty(delta, rho_min, rho_max, 
     num_users =zeros(1,length(theta));
     err = ones(1,length(theta));
     for k = 1:length(theta)
-        for n = 1:1000
+        for n = 1:100
             p = p_not_empty(theta(k),rho_min, rho_max, group_size, num_dim, n);
             %err = abs(p-(1-delta));
             if abs(p-(1-delta)) < err(k)
