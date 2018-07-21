@@ -2,11 +2,11 @@ function [lBound uBound] = delta_c(theta, num_dim)
     %Argument Validation
     classes = {'double'};
     theta_attr = {'>=',0,'<=',pi/2};
-    dim_attr = {'>=',2};
+    %dim_attr = {'>=',2};
     funcName = 'delta_c';
 
     validateattributes(theta,classes,theta_attr,funcName)
-    validateattributes(num_dim,classes,dim_attr,funcName)
+    %validateattributes(num_dim,classes,dim_attr,funcName)
 
     psi = psi_m(num_dim-2);
     %Condition for lower bound:
