@@ -11,7 +11,7 @@ ap_loc = [5,5];     %Meters
 num_ap_ants = 4;
 ap_tx_power = 1;    %Watts
 
-sta_density = .0625;
+sta_density = .20;
 wlan_length = 10;   %Meters, area is square of this value
 a = AccessPoint(ap_loc, ap_tx_power, 4);
 
@@ -25,7 +25,13 @@ end
 
 a = a.setPotAssocStas(stas,wlan_length);
 
-a = a.genStaSusSets(.001,0,0);
+rho_min = 1;
+rho_max = 2;
+epsilon = .5;
+gs = 2;
+numStas = 15;
+
+a = a.pollStaSusExistence(.001,rho_min,rho_max, gs, numStas);
 
 a = a.genStaSusGroups(2);
 

@@ -12,12 +12,13 @@ classdef Channel
     end
     methods
         function obj = Channel(stdDev, staApDist)
-            plExp = 2.4;
+            %plExp = 2.4;
+            plExp = -1;
             rvLen = 1000;
             obj.rvLen = rvLen;
             obj.stdDev = stdDev;
             obj.plExp = plExp;
-            pl = staApDist^(-plExp);
+            pl = staApDist^(-1*plExp);
             
             inphase = (stdDev/2)*randn(rvLen,1);
             quadrature = i*(stdDev/2)*randn(rvLen,1);

@@ -30,7 +30,11 @@ classdef AccessPoint
         %> The cell arrays contained in the larger cell array represent SUS
         %> groups.
         susGroups; 
-         
+        %> Cell array that represents the semi-orthogonal STAs for a subset 
+        %> of the WLAN. The columns of th array represent the 
+        %> reference STA. Each column contains a list of @Station objects
+        %> that are semi-orthogonal to the reference STA
+        susPollSets;
     end
     methods
         % ======================================================================
@@ -72,6 +76,18 @@ classdef AccessPoint
         %> @return modified instance of the class
         % ======================================================================
         obj = genStaSusSets(obj, orthThresh, snrLower, snrUpper)
+        % ======================================================================
+        %> @brief Poll STAs to simulate probability of existence
+        %>
+        %> @param orthogonality threshold (epsilon Swannack, 2005)
+        %> @param lower bound on the channel L2 norm (rho- Swannack 2005)
+        %> @param upper bound on the channel L2 norm (rho+ Swannack 2005)
+        %> @param SUS group size
+        %> @param number of STAs to consider
+        %>
+        %> @return modified instance of the class
+        % ======================================================================
+        obj = pollStaSusSetExistence(obj, orthThresh, snrLower, snrUpper, groupSize, numStas)
         % ======================================================================
         %> @brief Generate the SUS groups
         %>

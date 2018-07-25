@@ -1,23 +1,50 @@
 function obj = pollStaSusSetExistence(obj, orthThresh, snrLower, snrUpper, groupSize, numStas)
-    num_pot_stas = length(obj.potAssocStas);
+    num_pot_stas = min(numStas,length(obj.potAssocStas));
+    potStas = [];
+    for i = 1:num_pot_stas
+        sta_idx = ceil(rand(1)*length(obj.potAssocStas));
+        if i == 1
+            potStas = obj.potAssocStas(sta_idx);
+        else
+            potStas = [ potStas obj.potAssocStas(sta_idx) ];
+        end
+    end
     %num_pot_stas = 2;
     orth_val =[];
     sus_created = false;
-    k = 1;
-    for sta_ctr = 1:numStas
-        sta_idx = ceil(rand(1)*length(obj.potAssocStas));
-        sta = obj.potAssocStas(sta_idx);
-        H = sta.channel(k).h;
-        norm_val = sum(sum(ctranspose(H)*H)))/length(H(:,1));
-        if (normval <= snrUpper) & (normval >= snrLower)
-            if sus_created = false
-                stas_mat = {sta};
-                sus_created = true;
-            else
-                stas_mat{k} = sta;
+    for i = 1:num_pot_stas
+        stas_vec = [];
+        for j = 1:num_pot_stas
+            H1 = zeros(length(potStas(i).channel(1).h),length(potStas(i).channel));
+            H2 = zeros(length(potStas(j).channel(1).h),length(potStas(j).channel));
+            for k = length(H1(1,:))
+                H1(:,k) = potStas(i).channel(k).h;
+                H2(:,k) = potStas(j).channel(k).h;
             end
-            k = k + 1;
+            if i == j
+                norm_val = sum(sum(ctranspose(H1)*H2))/length(H1(:,1))
+                if (norm_val >= snrLower) && (norm_val<= snrUpper)
+                    if (i == 1)
+                        stas_mat = {potStas(j)};
+                        sus_created = true;
+                        %break;
+                    else
+                        stas_mat{i,j} = potStas(j);
+                    end
+                else
+                    if (i == 1)
+                        stas_mat = {};
+                        sus_created = true;
+                    end
+                end
+            else
+                %orth_val = calcOrth(potStas(i), potStas(j)); 
+                orth_val = abs(sum(sum(ctranspose(H1)*H2)))/length(H1(:,1));
+                if orth_val < orthThresh
+                    stas_mat{i,j} = potStas(j);
+                end
+            end 
         end
     end
-    obj.susSets = stas_mat;
+    obj.susPollSets = stas_mat;
 end
