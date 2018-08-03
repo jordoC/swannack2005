@@ -4,7 +4,7 @@
 %       -See inline 
 %       -The expected number of users is given by length*length*lambda 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function ppp_pairs = ppp_2d(lambda, length )
+function [ppp_pairs density] = ppp_2d(lambda, length )
     %disp 'WARNING: Overwriting function arguments in ppp_2d'
     %lambda= 1;
     %length = 100;
@@ -18,7 +18,7 @@ function ppp_pairs = ppp_2d(lambda, length )
     R = Y.*transp(X);
     points = sum(sum(R));
     A = length^2;
-    density = points/A
+    density = points/A;
     
     
     %Generate a set of grid pairs based on the probabilities previously calculated.
