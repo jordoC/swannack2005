@@ -46,12 +46,11 @@ classdef Station
         %> @return modified instance of the class
         % ======================================================================
         function obj = setChannel(obj, stdDev, staApDist, numApAnts)
-
             %This structure assumes that channels for a given STA are uncorrelated
             %   Such an assumption might be justified by making sure antennas are at
             %   least half a wavelength away from each other on the AP.
             for idx = 1:numApAnts
-                obj.channel = [obj.channel Channel(stdDev, staApDist)];
+                obj.channel = [obj.channel Channel(stdDev/sqrt(numApAnts), staApDist)];
             end
         end
         % ======================================================================

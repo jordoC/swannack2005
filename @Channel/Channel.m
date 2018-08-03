@@ -12,18 +12,19 @@ classdef Channel
     end
     methods
         function obj = Channel(stdDev, staApDist)
-            %plExp = 2.4;
-            plExp = -1;
-            rvLen = 1000;
+            plExp = 2.4;
+            rvLen = 100;
             obj.rvLen = rvLen;
             obj.stdDev = stdDev;
             obj.plExp = plExp;
             pl = staApDist^(-1*plExp);
             
-            inphase = (stdDev/2)*randn(rvLen,1);
-            quadrature = i*(stdDev/2)*randn(rvLen,1);
+            inphase = (stdDev/sqrt(2))*randn(rvLen,1);
+            quadrature = i*(stdDev/sqrt(2))*randn(rvLen,1);
             
-            obj.h = (inphase+quadrature)*sqrt(pl);
+            %TODO: Consider the impact of path loss-- does not seem to be in Swannack's work 
+            %obj.h = (inphase+quadrature)*sqrt(pl);
+            obj.h = (inphase+quadrature);
         end
         %function obj = test(obj, tmp)
         %    obj.tmp = tmp;
