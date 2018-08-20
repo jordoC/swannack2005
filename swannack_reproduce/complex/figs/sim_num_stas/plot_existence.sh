@@ -45,8 +45,8 @@ set yrange [-0.05 : 1.05]
 #   Calculation comes from Modern Mathematical Methods (1988), assumes a 
 #   90% confidence interval. Other assumptions about the independence of 
 #   the Monte Carlo runs are also assumed.
-n(x)=1.654*(x*(1-x)/50)**.5
-GPFUN_n = "n(x)=1.654*(x*(1-x)/50)**.5"
+n(x)=0.8159*(x*(1-x)/50)**.5
+GPFUN_n = "n(x)=0.8159*(x*(1-x)/50)**.5"
 
 
 set title "SUS group existence probability vs number of candidate users considered \n Orthogonality requirement set to 0.2"
