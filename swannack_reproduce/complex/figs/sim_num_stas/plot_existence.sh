@@ -48,6 +48,9 @@ set yrange [-0.05 : 1.05]
 n(x)=0.8159*(x*(1-x)/50)**.5
 GPFUN_n = "n(x)=0.8159*(x*(1-x)/50)**.5"
 
+eb_300(x)=0.8159*(x*(1-x)/300)**.5
+GPFUN_eb_300 = "eb_300 (x)=0.8159*(x*(1-x)/300)**.5"
+
 
 set title "SUS group existence probability vs number of candidate users considered \n Orthogonality requirement set to 0.2"
 set datafile separator ","
@@ -84,7 +87,7 @@ set title "SUS group existence probability vs number of candidate users consider
 set xrange [0 : 30]
 set yrange [-0.05 : 1.05]
 
-plot    "eps_0.4_gs2.csv"           using 1:2:(n($2))   with yerrorbars title "Group size = 2, Simulated complex, 90% Confidence Interval"         lc rgb '#0000ff' lw 2 ps 2 pt 9
+plot    "eps_0.4_gs2.csv"           using 1:2:(eb_300($2))   with yerrorbars title "Group size = 2, Simulated complex, 90% Confidence Interval"         lc rgb '#0000ff' lw 2 ps 2 pt 9
 replot  "eps_0.4_gs2_theor.csv"     using 1:2                           title "Group size = 2, Calculated complex"                                 with linespoints linestyle 1
 replot  "eps_0.4_gs2_real.csv"      using 1:2:(n($2))   with yerrorbars title   "Group size = 2, Simulated real, 90% Confidence Interval "         lc rgb '#0000ff' lw 2 ps 2 pt 8
 replot  "eps_0.4_gs2_real_theor.csv"using 1:2                           title "Group size = 2, Calculated real"                                    with linespoints linestyle 2
