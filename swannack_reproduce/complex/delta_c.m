@@ -11,6 +11,7 @@ function [lBound uBound] = delta_c(theta, num_dim)
     psi = psi_m(num_dim-2);
     %Condition for lower bound:
     s = pi/2*psi;
+    %beta = 40;
     beta = num_dim-1;
     lBound = c_func(theta, s ,beta);
 

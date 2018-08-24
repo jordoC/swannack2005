@@ -89,17 +89,17 @@ set yrange [-0.05 : 1.05]
 
 plot    "eps_0.4_gs2.csv"           using 1:2:(eb_300($2))   with yerrorbars title "Group size = 2, Simulated complex, 90% Confidence Interval"         lc rgb '#0000ff' lw 2 ps 2 pt 9
 replot  "eps_0.4_gs2_theor.csv"     using 1:2                           title "Group size = 2, Calculated complex"                                 with linespoints linestyle 1
-replot  "eps_0.4_gs2_real.csv"      using 1:2:(n($2))   with yerrorbars title   "Group size = 2, Simulated real, 90% Confidence Interval "         lc rgb '#0000ff' lw 2 ps 2 pt 8
+replot  "eps_0.4_gs2_real.csv"      using 1:2:(eb_300($2))   with yerrorbars title   "Group size = 2, Simulated real, 90% Confidence Interval "         lc rgb '#0000ff' lw 2 ps 2 pt 8
 replot  "eps_0.4_gs2_real_theor.csv"using 1:2                           title "Group size = 2, Calculated real"                                    with linespoints linestyle 2
                                                                                                                                                    
-replot  "eps_0.4_gs3.csv"           using 1:2:(n($2))   with yerrorbars title "Group size = 3, Simulated complex, 90% Confidence Interval"         lc rgb '#ff0000' lw 2 ps 2 pt 5
+replot  "eps_0.4_gs3.csv"           using 1:2:(eb_300($2))   with yerrorbars title "Group size = 3, Simulated complex, 90% Confidence Interval"         lc rgb '#ff0000' lw 2 ps 2 pt 5
 replot  "eps_0.4_gs3_theor.csv"     using 1:2                           title "Group size = 3, Calculated complex"                                 with linespoints linestyle 4
-replot  "eps_0.4_gs3_real.csv"      using 1:2:(n($2))   with yerrorbars title "Group size = 3, Simulated real, 90% Confidence Interval"            lc rgb '#ff0000' lw 2 ps 2 pt 4
+replot  "eps_0.4_gs3_real.csv"      using 1:2:(eb_300($2))   with yerrorbars title "Group size = 3, Simulated real, 90% Confidence Interval"            lc rgb '#ff0000' lw 2 ps 2 pt 4
 replot  "eps_0.4_gs3_real_theor.csv" using 1:2                          title "Group size = 3, Calculated real"                                    with linespoints linestyle 5
                                                                                                                                                    
-replot  "eps_0.4_gs4.csv"           using 1:2:(n($2))   with yerrorbars title "Group size = 4, Simulated complex, 90% Confidence Interval"         lc rgb '#000000' lw 2 ps 2 pt 7
+replot  "eps_0.4_gs4.csv"           using 1:2:(eb_300($2))   with yerrorbars title "Group size = 4, Simulated complex, 90% Confidence Interval"         lc rgb '#000000' lw 2 ps 2 pt 7
 replot  "eps_0.4_gs4_theor.csv"     using 1:2                           title "Group size = 4, Calculated complex"                                 with linespoints linestyle 7
-replot  "eps_0.4_gs4_real.csv"      using 1:2:(n($2))   with yerrorbars title "Group size = 4, Simulated real, 90% Confidence Interval"            lc rgb '#000000' lw 2 ps 2 pt 6
+replot  "eps_0.4_gs4_real.csv"      using 1:2:(eb_300($2))   with yerrorbars title "Group size = 4, Simulated real, 90% Confidence Interval"            lc rgb '#000000' lw 2 ps 2 pt 6
 replot  "eps_0.4_gs4_real_theor.csv"using 1:2                           title "Group size = 4, Calculated real"                                    with linespoints linestyle 6
 
 set key  font ",12" bottom right
