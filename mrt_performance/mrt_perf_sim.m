@@ -1,10 +1,10 @@
-addpath ../swannack_reproduce
+addpath ../swannack_reproduce/beta_based
 
 num_candidate_users = 15;
 rho_min = 1;
 rho_max = 2;
-group_size = 4;
-filepath = 'figs/30_candidate_mrt_gs2.csv';
+group_size = 2;
+filepath = 'figs/15_candidate_mrt_gs2.csv';
 
 num_tx_ants = 4;
 epsilon_vec = 0:0.025:2;
