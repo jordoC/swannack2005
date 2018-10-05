@@ -7,11 +7,27 @@ function shannon_capacity = mrt_capacity(epsilon, group_size, num_tx_ants, is_wl
         else
         gamma_fact = 2;
     end 
-    user_chan_norm = gamrnd(gamma_fact*num_tx_ants, gamma_fact/num_tx_ants);
+    while 1
+        user_chan_norm = gamrnd(2*num_tx_ants, 2/num_tx_ants);
+        if (user_chan_norm >= 1) && (user_chan_norm<= 2)
+            %display 'break'
+            break;
+        end
+    end
+    %This can be used for a lower bound on the curve
+    %user_chan_norm = rho_min;
     intf_chan_norm = [];
 
     for i = 1:group_size
-        intf_chan_norm = [intf_chan_norm  gamrnd(gamma_fact*num_tx_ants, gamma_fact/num_tx_ants)];
+    while 1
+        intf_chan_norm_inst = gamrnd(gamma_fact*num_tx_ants, gamma_fact/num_tx_ants);
+        if (intf_chan_norm_inst >= 1) && (intf_chan_norm_inst <= 2)
+            intf_chan_norm = [intf_chan_norm  intf_chan_norm_inst];
+            break;
+        end
+    end
+        %This can be used for a lower bound on the curve
+        %intf_chan_norm = [intf_chan_norm  rho_min];
     end
 
     sinr_numerator = (tx_power/num_tx_ants)*(user_chan_norm);
